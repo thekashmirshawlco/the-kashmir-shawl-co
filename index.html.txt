@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Kashmir Shawl Co.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#f8f4ee;
+      color:#2b1d17;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .navbar{
+      position:fixed;
+      top:0;
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:24px 8%;
+      z-index:1000;
+      background:rgba(248,244,238,0.92);
+      backdrop-filter:blur(10px);
+    }
+
+    .logo{
+      font-family:'Playfair Display',serif;
+      font-size:28px;
+      font-weight:600;
+      letter-spacing:1px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+      font-size:15px;
+    }
+
+    .hero{
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+      url('https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      padding:0 8%;
+      color:white;
+    }
+
+    .hero-content{
+      max-width:700px;
+    }
+
+    .hero h1{
+      font-family:'Playfair Display',serif;
+      font-size:72px;
+      line-height:1.1;
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      font-size:20px;
+      line-height:1.8;
+      margin-bottom:35px;
+      max-width:600px;
+    }
+
+    .btn-group{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:15px 32px;
+      border-radius:50px;
+      font-size:15px;
+      transition:0.3s;
+    }
+
+    .btn-primary{
+      background:#b08d57;
+      color:white;
+    }
+
+    .btn-primary:hover{
+      background:#967547;
+    }
+
+    .btn-outline{
+      border:1px solid white;
+      color:white;
+    }
+
+    .btn-outline:hover{
+      background:white;
+      color:#2b1d17;
+    }
+
+    section{
+      padding:100px 8%;
+    }
+
+    .section-title{
+      font-family:'Playfair Display',serif;
+      font-size:48px;
+      margin-bottom:25px;
+      text-align:center;
+    }
+
+    .section-subtitle{
+      text-align:center;
+      max-width:700px;
+      margin:0 auto 70px;
+      line-height:1.8;
+      color:#5c4c45;
+    }
+
+    .story{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .story img{
+      width:100%;
+      border-radius:20px;
+      object-fit:cover;
+      height:600px;
+    }
+
+    .story-text h2{
+      font-family:'Playfair Display',serif;
+      font-size:50px;
+      margin-bottom:25px;
+    }
+
+    .story-text p{
+      line-height:1.9;
+      margin-bottom:20px;
+      color:#4d4039;
+    }
+
+    .collections-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .collection-card{
+      background:white;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.4s;
+      box-shadow:0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .collection-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .collection-card img{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+    }
+
+    .collection-content{
+      padding:25px;
+    }
+
+    .collection-content h3{
+      font-family:'Playfair Display',serif;
+      margin-bottom:10px;
+      font-size:28px;
+    }
+
+    .collection-content p{
+      color:#5c4c45;
+      line-height:1.7;
+    }
+
+    .craftsmanship{
+      background:#2b1d17;
+      color:white;
+      text-align:center;
+      padding:120px 8%;
+    }
+
+    .craftsmanship h2{
+      font-family:'Playfair Display',serif;
+      font-size:60px;
+      margin-bottom:25px;
+    }
+
+    .craftsmanship p{
+      max-width:800px;
+      margin:auto;
+      line-height:1.9;
+      color:#ddd;
+      font-size:18px;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .gallery img{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+      border-radius:18px;
+    }
+
+    .contact{
+      text-align:center;
+    }
+
+    .contact p{
+      max-width:700px;
+      margin:20px auto;
+      line-height:1.8;
+      color:#5c4c45;
+    }
+
+    .footer{
+      background:#201510;
+      color:white;
+      padding:40px 8%;
+      text-align:center;
+    }
+
+    .footer h3{
+      font-family:'Playfair Display',serif;
+      margin-bottom:15px;
+      font-size:28px;
+    }
+
+    .footer p{
+      color:#bbb;
+      margin-bottom:10px;
+    }
+
+    .whatsapp{
+      position:fixed;
+      bottom:25px;
+      right:25px;
+      background:#25D366;
+      color:white;
+      width:65px;
+      height:65px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:30px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.2);
+      z-index:999;
+    }
+
+    @media(max-width:900px){
+
+      .hero h1{
+        font-size:50px;
+      }
+
+      .story{
+        grid-template-columns:1fr;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .section-title{
+        font-size:38px;
+      }
+
+      .craftsmanship h2{
+        font-size:42px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">The Kashmir Shawl Co.</div>
+
+    <div class="nav-links">
+      <a href="#story">Our Story</a>
+      <a href="#collections">Collections</a>
+      <a href="#craft">Craftsmanship</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Crafted in Kashmir.<br>Worn Across Generations.</h1>
+
+      <p>
+        Third-generation Kashmiri craftsmanship bringing timeless
+        Pashmina shawls, heritage weaves, and handmade luxury
+        to the world.
+      </p>
+
+      <div class="btn-group">
+        <a href="#collections" class="btn btn-primary">Explore Collection</a>
+        <a href="#story" class="btn btn-outline">Our Story</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="story">
+    <div class="story">
+
+      <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="story-text">
+        <h2>Three Generations of Heritage</h2>
+
+        <p>
+          The Kashmir Shawl Co. was born from generations deeply connected
+          to the timeless art of Kashmiri shawl craftsmanship.
+        </p>
+
+        <p>
+          From handwoven Pashmina to intricate Sozni embroidery,
+          our family has spent decades preserving the elegance,
+          patience, and artistry that define authentic Kashmiri luxury.
+        </p>
+
+        <p>
+          Every shawl tells a story of heritage, craftsmanship,
+          and the soul of Kashmir itself.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="collections">
+
+    <h2 class="section-title">Our Collections</h2>
+
+    <p class="section-subtitle">
+      Discover handcrafted shawls and timeless pieces created
+      with exceptional artistry from Kashmir.
+    </p>
+
+    <div class="collections-grid">
+
+      <div class="collection-card">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="collection-content">
+          <h3>Pashmina Shawls</h3>
+          <p>Soft, elegant, and timeless handcrafted Pashmina shawls from Kashmir.</p>
+        </div>
+      </div>
+
+      <div class="collection-card">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="collection-content">
+          <h3>Kani Shawls</h3>
+          <p>Traditional woven masterpieces inspired by centuries-old Kashmiri artistry.</p>
+        </div>
+      </div>
+
+      <div class="collection-card">
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="collection-content">
+          <h3>Sozni Embroidery</h3>
+          <p>Intricate needlework crafted patiently by skilled Kashmiri artisans.</p>
+        </div>
+      </div>
+
+      <div class="collection-card">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="collection-content">
+          <h3>Mens Shawls</h3>
+          <p>Classic luxury shawls designed with understated elegance for men.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="craft" class="craftsmanship">
+
+    <h2>Every Thread Carries Kashmir</h2>
+
+    <p>
+      Behind every shawl lies countless hours of weaving,
+      embroidery, patience, and generational craftsmanship.
+      Our artisans preserve centuries-old traditions through
+      slow handmade processes that celebrate true luxury.
+    </p>
+
+  </section>
+
+  <section id="gallery">
+
+    <h2 class="section-title">Artisan Gallery</h2>
+
+    <p class="section-subtitle">
+      Inspired by the textures, people, and timeless beauty of Kashmir.
+    </p>
+
+    <div class="gallery">
+
+      <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1200&auto=format&fit=crop">
+
+      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop">
+
+      <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop">
+
+      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop">
+
+    </div>
+
+  </section>
+
+  <section id="contact" class="contact">
+
+    <h2 class="section-title">Get In Touch</h2>
+
+    <p>
+      For collections, worldwide orders, collaborations,
+      or private inquiries, connect with The Kashmir Shawl Co.
+    </p>
+
+    <div class="btn-group" style="justify-content:center; margin-top:40px;">
+      <a href="https://wa.me/911234567890" class="btn btn-primary">WhatsApp Us</a>
+      <a href="https://instagram.com" class="btn btn-outline" style="border:1px solid #2b1d17; color:#2b1d17;">Instagram</a>
+    </div>
+
+  </section>
+
+  <footer class="footer">
+
+    <h3>The Kashmir Shawl Co.</h3>
+
+    <p>Third-Generation Kashmiri Craftsmanship</p>
+
+    <p>Handmade in Kashmir • Worldwide Shipping</p>
+
+  </footer>
+
+  <a class="whatsapp" href="https://wa.me/911234567890">
+    ☎
+  </a>
+
+</body>
+</html>
